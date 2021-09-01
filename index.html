@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>book-archive</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <main>
+      <section>
+        <div class="w-50 mx-auto input-group my-3">
+          <input
+            id="input-field"
+            type="text"
+            class="form-control"
+            placeholder="Enter your book name"
+            aria-label="Recipient's username"
+            aria-describedby="button-addon2"
+          />
+          <button
+            onclick="loadBookData()"
+            class="btn btn-outline-secondary"
+            type="button"
+            id="button-addon2"
+          >
+            Button
+          </button>
+        </div>
+        <p class="text-center" id="input-error"></p>
+        <h3 class="text-center mb-3" id="total-search"></h3>
+      </section>
+      <!-- spinner -->
+      <div class="d-flex justify-content-center">
+        <div
+          hidden
+          id="spinner"
+          class="spinner-border text-danger"
+          role="status"
+        >
+          <span class="sr-only"></span>
+        </div>
+      </div>
+      <!-- show all book information -->
+      <section>
+        <div
+          id="books-info-container"
+          class="row row-cols-1 row-cols-md-2 g-4"
+        ></div>
+      </section>
+    </main>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
