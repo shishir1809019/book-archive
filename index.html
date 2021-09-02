@@ -14,6 +14,7 @@
   </head>
   <body>
     <main>
+      <!-- input search field with button -->
       <section>
         <div class="w-50 mx-auto input-group my-3">
           <input
@@ -33,10 +34,14 @@
             Button
           </button>
         </div>
-        <p class="text-center" id="input-error"></p>
+        <!-- show error -->
+        <p class="text-center text-danger" id="input-error"></p>
+
+        <!-- show total search found -->
         <h3 class="text-center mb-3" id="total-search"></h3>
       </section>
-      <!-- spinner -->
+
+      <!-- show spinner -->
       <div class="d-flex justify-content-center">
         <div
           hidden
@@ -56,6 +61,7 @@
       </section>
     </main>
 
+    <!-- attaching javascript file -->
     <script src="js/main.js"></script>
   </body>
 </html>

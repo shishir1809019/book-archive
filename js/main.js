@@ -1,41 +1,51 @@
+// define which are used two or more
 const spinner = document.getElementById("spinner");
+const inputValueError = document.getElementById("input-error");
+const totalSearchFound = document.getElementById("total-search");
+const bookInfoContainer = document.getElementById("books-info-container");
+
+//load data using fetch from the server
 const loadBookData = () => {
-  // clear all value
-  document.getElementById("input-error").innerText = "";
-  document.getElementById("books-info-container").textContent = "";
-  document.getElementById("total-search").innerText = "";
+  // clear  values
+  inputValueError.innerText = "";
+  bookInfoContainer.textContent = "";
+  totalSearchFound.innerText = "";
+
+  //get the book name what you search
   const inputText = document.getElementById("input-field");
   const inputValue = inputText.value;
+
   if (inputValue === "") {
-    document.getElementById("input-error").innerText =
-      "Please enter a book name";
+    //error handling when search field is empty
+    inputValueError.innerText = "Please enter a book name";
     return;
   } else {
-    spinner.removeAttribute("hidden");
+    spinner.removeAttribute("hidden"); //show the spinner
 
+    // load value from server
     fetch(`https://openlibrary.org/search.json?q=${inputValue}`)
       .then((res) => res.json())
       .then((data) => {
-        spinner.setAttribute("hidden", "");
+        spinner.setAttribute("hidden", ""); //hide the spinner
         console.log(data.numFound);
         if (data.numFound === 0) {
-          document.getElementById("input-error").innerText =
-            "please enter a valid book name";
+          //error handling when user give not a valid input
+          inputValueError.innerText = "please enter a valid book name";
           inputText.value = "";
           return;
+        } else {
+          // show total search value
+          totalSearchFound.innerText = `Total search found: ${data.numFound}`;
+          // call function for showing book information
+          displayBookInfo(data.docs);
+          inputText.value = ""; //clear input field
         }
-        document.getElementById(
-          "total-search"
-        ).innerText = `Total search found: ${data.numFound}`;
-        displayBookInfo(data.docs);
-        inputText.value = "";
       });
   }
 };
 
+// this function for show book info
 const displayBookInfo = (booksInfo) => {
-  const booksInfoContainer = document.getElementById("books-info-container");
-  //   booksInfoContainer.textContent = "";
   booksInfo.forEach((book) => {
     console.log(book);
     const div = document.createElement("div");
@@ -62,6 +72,6 @@ const displayBookInfo = (booksInfo) => {
               </div>
             </div>
     `;
-    booksInfoContainer.appendChild(div);
+    bookInfoContainer.appendChild(div);
   });
 };
