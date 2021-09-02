@@ -27,7 +27,7 @@ const loadBookData = () => {
       .then((res) => res.json())
       .then((data) => {
         spinner.setAttribute("hidden", ""); //hide the spinner
-        console.log(data.numFound);
+        // console.log(data.numFound);
         if (data.numFound === 0) {
           //error handling when user give not a valid input
           inputValueError.innerText = "please enter a valid book name";
@@ -47,7 +47,7 @@ const loadBookData = () => {
 // this function for show book info
 const displayBookInfo = (booksInfo) => {
   booksInfo.forEach((book) => {
-    console.log(book);
+    // console.log(book);
     const div = document.createElement("div");
     div.classList.add("col");
     div.innerHTML = `
@@ -64,7 +64,7 @@ const displayBookInfo = (booksInfo) => {
                   book.author_name ? `${book.author_name}` : "unknown"
                 }</p>
                 <p class="card-text">Publisher:${
-                  book.publisher ? `${book.publisher}` : "unknown"
+                  book.publisher ? `${book.publisher[0]}` : "unknown"
                 }</p>
                 <p class="card-text">First published year:${
                   book.first_publish_year
