@@ -63,6 +63,9 @@ const displayBookInfo = (booksInfo) => {
                 <p class="card-text">Author:${
                   book.author_name ? `${book.author_name}` : "unknown"
                 }</p>
+                <p class="card-text">Publisher:${
+                  book.publisher ? `${book.publisher}` : "unknown"
+                }</p>
                 <p class="card-text">First published year:${
                   book.first_publish_year
                     ? `${book.first_publish_year}`
