@@ -2,7 +2,7 @@
 
 ## HTML, CSS, JavaScript, ES6, DOM, Bootstrap
 
-are used in this project And in this project main part call api by fetch
+are used in this project & project's main part is call api by fetch
 
 ## API Links
 
